@@ -1,0 +1,409 @@
+Delivered-To: gaurav.tugnawat@exelaonline.com
+Received: by 2002:a05:7011:271b:b0:445:87b5:40fe with SMTP id tl27csp555391mdb;
+        Wed, 19 Mar 2025 07:31:15 -0700 (PDT)
+X-Received: by 2002:a17:902:e952:b0:223:5379:5e4e with SMTP id d9443c01a7336-2264981dc4dmr61446965ad.10.1742394674822;
+        Wed, 19 Mar 2025 07:31:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742394674; cv=none;
+        d=google.com; s=arc-20240605;
+        b=OJ2TCdqxk+jRgc9fllY+OEGgLQ7YtPu9Yt6H6L0AmccZiQhLMWVfe5ZbKYR9Nf1nzZ
+         v2FLFcQQXc0fC1Fqdb3w8CrTnEjBEAkeNBt+qJdPK43E75HapM6/5lzeTbH+JPsbWF0K
+         b5IMvqZqg/IPi3XeDsJR/+GQnfAt16C+C66Wu4KWBHK6JhM7UwOLGh2qRTYXgLLFnQou
+         YWszUjr+llSf4CjIMTTcfwZTCWV/Ak4nFRP+/Xi95WuOSKu6WyxsC8y8R/kal/I8Jg4Y
+         synnQrP9qYQKDB0cP3xYpVxtl1Ead2YWoyLGn+gOpC7zxoR3z1xz4IOoOQklEjBxDooF
+         S5BQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=0GV++pLwG+rbTx5Srouux908VPKUr/hCDin6nrm+v8o=;
+        fh=Q6ihc6svq0MKcuEgebztTrZDNRWQGMvguYvt2oY1aVw=;
+        b=M79mQRbxNwaPbxsYisiCGbvJ/7L31SXC6Jo/lD7VUOqhPqByk05iB0b/epVy0f+I0m
+         m1hjHl+cHQc6JJJy8Zzyw/jqAM4tRS8xp+23yCNi90hY0qFrlKjYxz9xqqJVV21gj32T
+         proNJ4rLODRo2JPwrf9Ye/nu0pKrsEOJ38+vVmIGLKyqMvDU/VaATV8Ac4+JjhIOZ81q
+         RsHz1d24qOmVfsOxAB4V32k69x4Mesbo6MElNtZvSXWxZoIYnuNPOaPYskeAj1/RGDkE
+         j0G4CrKNam4HTrwvktw1qnlq+hJq3+PjisCZo6ZpLxOLMK24VmNkk2q8XtTeOtqW+Ku+
+         7lwg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@exelaonline.com header.s=google header.b=np9r+BLm;
+       spf=pass (google.com: domain of jayshree.shelke@exelaonline.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=jayshree.shelke@exelaonline.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=exelaonline.com;
+       dara=neutral header.i=@exelaonline.com
+Return-Path: <jayshree.shelke@exelaonline.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b4bde8sor119460675ad.14.2025.03.19.07.31.14
+        for <gaurav.tugnawat@exelaonline.com>
+        (Google Transport Security);
+        Wed, 19 Mar 2025 07:31:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jayshree.shelke@exelaonline.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@exelaonline.com header.s=google header.b=np9r+BLm;
+       spf=pass (google.com: domain of jayshree.shelke@exelaonline.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=jayshree.shelke@exelaonline.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=exelaonline.com;
+       dara=neutral header.i=@exelaonline.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=exelaonline.com; s=google; t=1742394674; x=1742999474; darn=exelaonline.com;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=0GV++pLwG+rbTx5Srouux908VPKUr/hCDin6nrm+v8o=;
+        b=np9r+BLmj4gaWZLot7e/QHlwi1IqjZVrXQh6nXEuVkz/xYn45R0rE/jGxJKiD452E6
+         6dlmLu0m2P+UXpJTBKWCNCw4FDo5wseRV3iMBcb1hKKUZubCm/MOpVpPqCysXMWA39Ur
+         HZT0dHpRWyQyeGgIItdRIEMXAHRz3MLHVMpGFsFgheEgpIhIdwISWh29VLysCmP32LSs
+         3yPMR8by5qdixP6GVnjH/XrurdgnQdBj1vma1DN10YCYNWWMYqfrJJ0CEoigY7BTuNes
+         /2Qp/qOT4xMnqEdmDyclUMtBWx/PlTHGMCeiu2w1Y9NthS7/XN8Xz5Y6UvUHIS8NyB6o
+         9nqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742394674; x=1742999474;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0GV++pLwG+rbTx5Srouux908VPKUr/hCDin6nrm+v8o=;
+        b=pFuD6k/FoVCsAM9gtXqeC3FAJNgALyMLy+6sV9OwpwDKJcOOrMp5SsQ6RALlC2tz6G
+         AMjiF/k+ukWrSlBFOT1/37nTTVmTfS7OrFsqXLhFjKupTHLSkxUUcJGuFIGqJ+8dXYj1
+         19NZG1HYzorDjTEDeYCEppDA3TjAf2LLvUVASGvWXynSb6kOhNnFlHdK6u0oDEU0Frga
+         5NcfQXHK/baeSuvzZEJnvSEPijOhaB1dAwEMB34+T0fRkXEk78sQv4FxSDKcN0GiRZX3
+         3TTk1op9RAv+ce2ZBHwyfxFQULrcuzRCXf2bxxsHHgcF0o2or9MYTRsUff02SI/b5MTw
+         gqCw==
+X-Gm-Message-State: AOJu0YwuVu6u0HLlrpFSJz41OLDNYab06hFXJ3G/3EHTJOFMAmn03eYh
+	Bee5nd0bJO2Jgc/DYGi8PwSC/Bm1JoCI/YAqMF6D3a9Vh6Jv3mGJrLc58xeek8TIIaRlawf3W12
+	5v6zW51L3F3I7go2YwoBbESI0uYS32wfzfZngLhYplHJTgwgpsSoprrVM2rbSQ+mi9SLfKowgN1
+	xIknHGerXrUBCIj31axiCcgNU5ApUVVB/A9mKCHZHSr6oHt3wwOujx
+X-Gm-Gg: ASbGncvdsQ3R7blyGLlOEjc4QfS01DccVMCRuL6ZG268EdyBMMauqV1xcuwuZxh1GjZ
+	8uz5Us66kEsYGuN3Z1c3pp3ls83t4IhPxH98i3KLXGNAAxlFLF5io64W4Zd6T2TvzdCar3Bxks/
+	eonQ1Bf4FYtUVN+GzpIun+4PGlJw==
+X-Google-Smtp-Source: AGHT+IFqa7ROP2U36y+vMk5ZLzEWGD4kqQcSNUodftFEWjC9lh+vWbTOCqLV9N9Yb4NGkfb8k+7x3NcifEJDC39WBAQ=
+X-Received: by 2002:a17:902:e846:b0:220:bd61:a337 with SMTP id
+ d9443c01a7336-226499399camr46484315ad.23.1742394673727; Wed, 19 Mar 2025
+ 07:31:13 -0700 (PDT)
+MIME-Version: 1.0
+References: <HP7YRkOLTA6tPriDdWu1eg@geopod-ismtpd-23>
+In-Reply-To: <HP7YRkOLTA6tPriDdWu1eg@geopod-ismtpd-23>
+From: Jayshree Shelke <jayshree.shelke@exelaonline.com>
+Date: Wed, 19 Mar 2025 20:01:02 +0530
+X-Gm-Features: AQ5f1JoHHQFYsreMaJ3jq61RACzeOggjKPOyhO-1nBCHmk5cGH5mLXlaqDLNcoE
+Message-ID: <CACGbBD1XugmjBxgiK4Tfr3wrbAJVQPO7tUQY+H0H-ZxNmDO=_w@mail.gmail.com>
+Subject: Re: [APAC] Exela HCM:Separation Request
+To: Gaurav Tugnawat <gaurav.tugnawat@exelaonline.com>
+Cc: Pooja Gosai <pooja.gosai@exelaonline.com>
+Content-Type: multipart/alternative; boundary="00000000000096368f0630b2dfa1"
+
+--00000000000096368f0630b2dfa1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Gaurav,
+
+As discussed and agreed, we will be processing your exit formalities
+tomorrow, 20th March 2025. Kindly be present in the office to complete the
+necessary formalities, including the submission of all company assets.
+
+Additionally, please make sure to mark your attendance in HCM using the OD
+option and download your payslips from the system.
+
+Any query let me know.
+
+
+
+--
+
+Jayshree Shelke
+
+Senior Human Resources Analyst - HR
+[image: Exela Technologies]
+<https://urldefense.proofpoint.com/v2/url?u=3Dhttp-3A__www.exelatech.com&d=
+=3DDwMGAg&c=3DvUJZwL3cXgysPapgT_xxpQ&r=3DqYKonYlzjxczUafF69aUpTo2yr3vlnyfAI=
+facMfaFVc&m=3DBEleYOt4bfeuGjzvehekEKqcRyy6_G9eQLtKlteRxRA&s=3DZtZoxYybCmOC8=
+pf0yeoK229hRtlZVj15I1uUn8zMCe8&e=3D>
+
+9th Floor, ICC Tech Park City | S.B. Road | Pune 411016
+
+O: +91 20.6743.7573 | M: +91 7796657481
+
+exelatech.com
+<https://urldefense.proofpoint.com/v2/url?u=3Dhttp-3A__www.exelatech.com&d=
+=3DDwMGAg&c=3DvUJZwL3cXgysPapgT_xxpQ&r=3DqYKonYlzjxczUafF69aUpTo2yr3vlnyfAI=
+facMfaFVc&m=3DBEleYOt4bfeuGjzvehekEKqcRyy6_G9eQLtKlteRxRA&s=3DZtZoxYybCmOC8=
+pf0yeoK229hRtlZVj15I1uUn8zMCe8&e=3D>
+  =E2=80=A2  About EXELA
+<https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.exelatech.com_a=
+bout-2Dus&d=3DDwMGAg&c=3DvUJZwL3cXgysPapgT_xxpQ&r=3DqYKonYlzjxczUafF69aUpTo=
+2yr3vlnyfAIfacMfaFVc&m=3DBEleYOt4bfeuGjzvehekEKqcRyy6_G9eQLtKlteRxRA&s=3D2T=
+sjiQIkpmtM3JqrI3DlrrcVDtrKmEIWVY5kqx67Foc&e=3D>
+  =E2=80=A2  Instagram
+<https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.instagram.com_e=
+xelatechnologies&d=3DDwMGAg&c=3DvUJZwL3cXgysPapgT_xxpQ&r=3DqYKonYlzjxczUafF=
+69aUpTo2yr3vlnyfAIfacMfaFVc&m=3DBEleYOt4bfeuGjzvehekEKqcRyy6_G9eQLtKlteRxRA=
+&s=3D7GytPlw8jAryTL_JwfZEk8_Bt6Hpe1ZWEVzZTrg2MGw&e=3D>
+  =E2=80=A2  LinkedIn
+<https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.linkedin.com_co=
+mpany_exela-2Dtechnologies&d=3DDwMGAg&c=3DvUJZwL3cXgysPapgT_xxpQ&r=3DqYKonY=
+lzjxczUafF69aUpTo2yr3vlnyfAIfacMfaFVc&m=3DBEleYOt4bfeuGjzvehekEKqcRyy6_G9eQ=
+LtKlteRxRA&s=3DvgnCkdlePgn9sFFxSElE3Mfig4_T_crRXr0TfTU6cDM&e=3D>
+
+
+
+On Mon, Mar 17, 2025 at 11:09=E2=80=AFAM HCM.Support via HRMS <hrms@exelaon=
+line.com>
+wrote:
+
+> You have received a separation approval request for the below-named
+> employee
+> Employee ID 506591 (BACS11788)
+> Employee Name Gaurav Tugnawat
+> Designation Project Manager
+> Level Level 8
+> Department Technology
+> Date Of Joining 13-Sep-2021
+> Overall Experience In BancTec TPS India Private Limited 3 Years 6 Months
+> Date of Resignation 14-Mar-2025
+> Requested Date of Relieving 21-Mar-2025
+> Reason for Resignation Career Change / Personal
+> Location Senapati Bapat Road,
+>
+> Bond Details:
+>
+> Please visit the following URL: https://apachcm.exelatech.com to
+> Accept/Reject the Resignation
+>
+> Regards,
+>
+> Exela HCM Team
+>
+> Note: This is an auto-generated email. Please do not reply to it.
+>
+
+--=20
+
+
+
+
+
+
+
+Please
+consider the environment before printing or forwarding this=20
+email. If you do
+print this email, please recycle the paper.=C2=A0
+
+
+
+
+
+
+This=20
+email
+message may contain confidential, proprietary and/or privileged=20
+information. It
+is intended only for the use of the intended recipient(s).=20
+If you have received
+it in error, please immediately advise the sender by=20
+reply email and then
+delete this email message. Any disclosure, copying,=20
+distribution or use of the
+information contained in this email message to=20
+or by anyone other than the
+intended recipient is strictly prohibited. Any=20
+views expressed in this message
+are those of the individual sender, except=20
+where the sender specifically states
+them to be the views of Exela=20
+Technologies, Inc. or its subsidiaries.=C2=A0This email
+does not constitute an=20
+agreement to conduct transactions by electronic means
+and does not create=20
+any legally binding contract or enforceable obligation
+against Exela in the=20
+absence of a fully signed written agreement.
+
+
+
+
+
+
+
+--00000000000096368f0630b2dfa1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Gaurav,<div><br></div><div><p>As discu=
+ssed and agreed, we will be processing your exit formalities tomorrow, 20th=
+ March 2025. Kindly be present in the office to complete the necessary form=
+alities, including the submission of all company assets.</p>
+<p>Additionally, please make sure to mark your attendance in HCM using the =
+OD option and download your payslips from the system.</p><p>Any query let=
+=C2=A0me know.</p><p><br></p><p><span class=3D"gmail_signature_prefix"><br =
+class=3D"gmail-Apple-interchange-newline">--</span><br></p><div dir=3D"ltr"=
+ class=3D"gmail_signature"><div dir=3D"ltr"><p class=3D"MsoNormal"><span st=
+yle=3D"font-size:9pt;font-family:Arial,sans-serif;color:rgb(25,24,27)">Jays=
+hree Shelke</span><span style=3D"font-size:9pt;font-family:Arial,sans-serif=
+;color:rgb(77,197,242)"></span></p><p class=3D"MsoNormal"><span style=3D"fo=
+nt-size:9pt;font-family:Arial,sans-serif;color:rgb(77,197,242)">Senior Huma=
+n Resources Analyst - HR</span><span style=3D"font-size:9pt;font-family:Ari=
+al,sans-serif;color:rgb(25,24,27)"><br></span><a href=3D"https://urldefense=
+.proofpoint.com/v2/url?u=3Dhttp-3A__www.exelatech.com&amp;d=3DDwMGAg&amp;c=
+=3DvUJZwL3cXgysPapgT_xxpQ&amp;r=3DqYKonYlzjxczUafF69aUpTo2yr3vlnyfAIfacMfaF=
+Vc&amp;m=3DBEleYOt4bfeuGjzvehekEKqcRyy6_G9eQLtKlteRxRA&amp;s=3DZtZoxYybCmOC=
+8pf0yeoK229hRtlZVj15I1uUn8zMCe8&amp;e=3D" target=3D"_blank"><span style=3D"=
+font-size:9pt;font-family:Arial,sans-serif;color:blue"><img border=3D"0" wi=
+dth=3D"300" height=3D"60" alt=3D"Exela Technologies"></span></a><span style=
+=3D"font-size:9pt;font-family:Arial,sans-serif;color:rgb(77,197,242)"></spa=
+n></p><p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10pt;f=
+ont-family:Arial,sans-serif;color:black">9th Floor, ICC Tech Park City | S.=
+B. Road | Pune 411016</span></p><p class=3D"MsoNormal"><span lang=3D"EN-US"=
+ style=3D"font-size:10pt;font-family:&quot;Segoe UI&quot;,sans-serif;color:=
+rgb(69,85,96)">O: +91 20.6743.7573 | M: +91 7796657481</span></p><p class=
+=3D"MsoNormal"><span style=3D"font-size:9pt;font-family:Arial,sans-serif;co=
+lor:rgb(25,24,27)"><a href=3D"https://urldefense.proofpoint.com/v2/url?u=3D=
+http-3A__www.exelatech.com&amp;d=3DDwMGAg&amp;c=3DvUJZwL3cXgysPapgT_xxpQ&am=
+p;r=3DqYKonYlzjxczUafF69aUpTo2yr3vlnyfAIfacMfaFVc&amp;m=3DBEleYOt4bfeuGjzve=
+hekEKqcRyy6_G9eQLtKlteRxRA&amp;s=3DZtZoxYybCmOC8pf0yeoK229hRtlZVj15I1uUn8zM=
+Ce8&amp;e=3D" target=3D"_blank">exelatech.com</a>=C2=A0=C2=A0</span><span s=
+tyle=3D"font-size:9pt;font-family:Arial,sans-serif;color:rgb(225,226,227)">=
+=E2=80=A2</span><span style=3D"font-size:9pt;font-family:Arial,sans-serif;c=
+olor:rgb(25,24,27)">=C2=A0=C2=A0<a href=3D"https://urldefense.proofpoint.co=
+m/v2/url?u=3Dhttps-3A__www.exelatech.com_about-2Dus&amp;d=3DDwMGAg&amp;c=3D=
+vUJZwL3cXgysPapgT_xxpQ&amp;r=3DqYKonYlzjxczUafF69aUpTo2yr3vlnyfAIfacMfaFVc&=
+amp;m=3DBEleYOt4bfeuGjzvehekEKqcRyy6_G9eQLtKlteRxRA&amp;s=3D2TsjiQIkpmtM3Jq=
+rI3DlrrcVDtrKmEIWVY5kqx67Foc&amp;e=3D" target=3D"_blank">About EXELA</a>=C2=
+=A0=C2=A0</span><span style=3D"font-size:9pt;font-family:Arial,sans-serif;c=
+olor:rgb(225,226,227)">=E2=80=A2</span><span style=3D"font-size:9pt;font-fa=
+mily:Arial,sans-serif;color:rgb(25,24,27)">=C2=A0=C2=A0<a href=3D"https://u=
+rldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.instagram.com_exelatechno=
+logies&amp;d=3DDwMGAg&amp;c=3DvUJZwL3cXgysPapgT_xxpQ&amp;r=3DqYKonYlzjxczUa=
+fF69aUpTo2yr3vlnyfAIfacMfaFVc&amp;m=3DBEleYOt4bfeuGjzvehekEKqcRyy6_G9eQLtKl=
+teRxRA&amp;s=3D7GytPlw8jAryTL_JwfZEk8_Bt6Hpe1ZWEVzZTrg2MGw&amp;e=3D" target=
+=3D"_blank">Instagram</a>=C2=A0=C2=A0</span><span style=3D"font-size:9pt;fo=
+nt-family:Arial,sans-serif;color:rgb(225,226,227)">=E2=80=A2</span><span st=
+yle=3D"font-size:9pt;font-family:Arial,sans-serif;color:rgb(25,24,27)">=C2=
+=A0=C2=A0<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__=
+www.linkedin.com_company_exela-2Dtechnologies&amp;d=3DDwMGAg&amp;c=3DvUJZwL=
+3cXgysPapgT_xxpQ&amp;r=3DqYKonYlzjxczUafF69aUpTo2yr3vlnyfAIfacMfaFVc&amp;m=
+=3DBEleYOt4bfeuGjzvehekEKqcRyy6_G9eQLtKlteRxRA&amp;s=3DvgnCkdlePgn9sFFxSElE=
+3Mfig4_T_crRXr0TfTU6cDM&amp;e=3D" target=3D"_blank">LinkedIn</a></span></p>=
+</div></div><p><br></p></div></div><br><div class=3D"gmail_quote gmail_quot=
+e_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 17, 2025 at =
+11:09=E2=80=AFAM HCM.Support via HRMS &lt;<a href=3D"mailto:hrms@exelaonlin=
+e.com">hrms@exelaonline.com</a>&gt; wrote:<br></div><blockquote class=3D"gm=
+ail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,=
+204,204);padding-left:1ex"><div id=3D"m_6820244803428864414SepartionMailCon=
+tent">
+    <p> You have received a separation approval request for the below-named=
+ employee </p>
+    <center>
+       =20
+        <table style=3D"border:1px solid black">
+            <tbody>
+                <tr>
+                    <td>Employee ID</td>
+                    <td>506591 (BACS11788)</td>
+                </tr>
+                <tr>
+                    <td>Employee Name</td>
+                    <td>Gaurav Tugnawat</td>
+                </tr>
+                <tr>
+                    <td>Designation</td>
+                    <td>Project Manager</td>
+                </tr>
+                <tr>
+                    <td>Level</td>
+                    <td>Level 8</td>
+                </tr>
+                <tr>
+                    <td>Department</td>
+                    <td>Technology</td>
+                </tr>
+                <tr>
+                    <td>Date Of Joining</td>
+                    <td>13-Sep-2021</td>
+                </tr>
+                <tr>
+                    <td>Overall Experience In BancTec TPS India Private Lim=
+ited</td>
+                    <td>3 Years 6 Months </td>
+                </tr>
+                <tr>
+                    <td>Date of Resignation</td>
+                    <td>14-Mar-2025</td>
+                </tr>
+                <tr>
+                    <td>Requested Date of Relieving</td>
+                    <td>21-Mar-2025</td>
+                </tr>
+                <tr>
+                    <td>Reason for Resignation</td>
+                    <td>Career Change / Personal</td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td>Senapati Bapat Road,</td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <p> Bond Details:  </p>
+    <p> Please visit the following URL: <a href=3D"https://apachcm.exelatec=
+h.com" target=3D"_blank">https://apachcm.exelatech.com</a> to Accept/Reject=
+ the Resignation </p>
+    <p>Regards,</p>
+	<p>Exela HCM Team</p>
+	<p style=3D"height:40px;color:rgb(204,102,0)">Note: This is an auto-genera=
+ted email. Please do not reply to it. </p>
+</div>
+
+<img src=3D"https://u36781479.ct.sendgrid.net/wf/open?upn=3Du001.v-2F9AAeJU=
+wNsgo4ZThA7OGzoEvNBoC6VfWC6WQ0yiBj1QbEiStJtE5DFLU2HurKO0El0NQ8wqio08-2Buyw7=
+I0Zh80f67Cvb1DZ-2F9mxkyGDHUiPmFKP3Yj34tFWCzgq4OSe5Kv16l5lUTPbtqwW-2FioMSX3a=
+OUobx-2Bwk-2FZRizD3OKa99XLsqVuLKBTJbGG2Iby3JzSTqUATriOCB40YPnxE3Dg-3D-3D" a=
+lt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height: 1px; width: =
+1px; border-width: 0px; margin: 0px; padding: 0px;">
+</blockquote></div><div><br clear=3D"all"></div><div><br></div><div dir=3D"=
+ltr" class=3D"gmail_signature"><div dir=3D"ltr"><p class=3D"MsoNormal"></p>
+
+<p class=3D"MsoNormal"><span style=3D"font-size:9pt;font-family:Arial,sans-=
+serif;color:rgb(25,24,27)">=C2=A0</span></p></div></div></div>
+
+<br>
+<div align=3D"center" style=3D"font-size:1.3em;text-align:center"><span lan=
+g=3D"EN-US" style=3D"font-family:&quot;Times New Roman&quot;,serif"><font s=
+ize=3D"3">
+
+<hr size=3D"2" width=3D"100%" align=3D"center">
+
+</font></span></div><p><font color=3D"#008000" size=3D"2"><span lang=3D"EN-=
+US">Please
+consider the environment before printing or forwarding this email. If you d=
+o
+print this email, please recycle the paper.</span>=C2=A0</font></p><div ali=
+gn=3D"center" style=3D"text-align:center"><span lang=3D"EN-US" style=3D"fon=
+t-family:&quot;Times New Roman&quot;,serif"><font size=3D"2">
+
+<hr size=3D"2" width=3D"100%" align=3D"center">
+
+</font></span></div><p><font size=3D"2"><font color=3D"#808080"><span lang=
+=3D"EN-US">This email
+message may contain confidential, proprietary and/or privileged information=
+. It
+is intended only for the use of the intended recipient(s). If you have rece=
+ived
+it in error, please immediately advise the sender by reply email and then
+delete this email message. Any disclosure, copying, distribution or use of =
+the
+information contained in this email message to or by anyone other than the
+intended recipient is strictly prohibited. Any views expressed in this mess=
+age
+are those of the individual sender, except where the sender specifically st=
+ates
+them to be the views of Exela Technologies, Inc. or its subsidiaries.</span=
+>=C2=A0</font><span style=3D"color:rgb(128,128,128)">This email
+does not constitute an agreement to conduct transactions by electronic mean=
+s
+and does not create any legally binding contract or enforceable obligation
+against Exela in the absence of a fully signed written agreement.</span></f=
+ont></p><p><font size=3D"2"><span lang=3D"EN-US"></span></font></p><div ali=
+gn=3D"center" style=3D"text-align:center"><span lang=3D"EN-US" style=3D"fon=
+t-family:&quot;Times New Roman&quot;,serif"><font size=3D"2">
+
+</font><hr size=3D"2" width=3D"100%" align=3D"center">
+
+</span></div>
+--00000000000096368f0630b2dfa1--
